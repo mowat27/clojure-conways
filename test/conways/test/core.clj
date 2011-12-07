@@ -3,11 +3,11 @@
   (:use [clojure.test]))
 
 ; Finding immediate neighbours
-(deftest test-immediate-neighbours-for-pos-6 ;; FIXME: write
-  (is (= [1 2 3 5 7 9 10 11] (immedaiate-neighbours 6 4)) "neighbours for pos 6, x size 4"))
+(deftest test-neighbours-for-pos-6 ;; FIXME: write
+  (is (= [1 2 3 5 7 9 10 11] (neighbours 6 4)) "neighbours for pos 6, x size 4"))
 
-(deftest test-immediate-neighbours-for-pos-5 ;; FIXME: write
-  (is (= [0 1 2 4 6 8 9 10] (immedaiate-neighbours 5 4)) "neighbours for pos 5, x size 4"))
+(deftest test-neighbours-for-pos-5 ;; FIXME: write
+  (is (= [0 1 2 4 6 8 9 10] (neighbours 5 4)) "neighbours for pos 5, x size 4"))
 
 (deftest test-values-at
 	(is (= [0 1 0] (values-at [0 1 2] [0 1 0 1 0]))))
@@ -56,18 +56,18 @@
 
 ; Running the game
 (deftest test-applying-rules-to-grid
-	(is (= [0 0 0 0] (next-generation [0 1 0 0] 2))))
+	(is (= [0 0 0 0] (next-generation 2 [0 1 0 0]))))
 
 (deftest test-newlines
 	(is (= ["" "\n"] (take 2 (newlines 2)))))	
 
 (deftest test-translate-grid
-	(is (= [" " "X\n"] (translate-grid [0 1] 2))))
+	(is (= [" " "X\n"] (translate-grid 2 [0 1]))))
 
 (def grid "  X \n    \n")
 
 (deftest test-printing-grid
-	(is (= grid (print-grid [0 0 1 0 0 0 0 0] 4))))	
+	(is (= grid (print-grid 4 [0 0 1 0 0 0 0 0]))))	
 
 
 
